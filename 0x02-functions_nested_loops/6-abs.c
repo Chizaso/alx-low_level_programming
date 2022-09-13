@@ -4,7 +4,7 @@
  * @n: parameters
  * Return: absolute value of number.
  */
-int _abs(iny n)
+int _abs(int n)
 {
 	if (n > 0)
 	return (n);
