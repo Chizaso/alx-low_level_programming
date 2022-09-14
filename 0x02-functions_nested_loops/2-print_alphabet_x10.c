@@ -1,25 +1,25 @@
-#include <main.h>
+#include  "main.h"
 /**
- * print_alphabet_x10 - this program prints alphabet in ten lines
- *
- * Return: 0
+ * times_table - Prints the 9 times table, starting with 0.
  */
-
-/*void print_alphabet_x10(void)*/
-void print_alphabet_x10(void)
+void times_table(void)
 {
-	char alfa = 'a';
-	int n = 1;
+	int num, mult, prod;
 
-	while (n <= 10)
+	for (num = 0; num <= 9; num++)
 	{
-		while (alfa <= 'z')
+		_putchar('0');
+		for (mult = 1; mult <= 9; mult++)
 		{
-			write(1, &alfa, 1);
-			alfa++;
+			_putchar(',');
+			_putchar(' ');
+			prod = num * mult;
+			if (prod <= 9)
+				_putchar(' ');
+			else
+				_putchar((prod / 10) + '0');
+			_putchar((prod % 10) + '0');
 		}
-		write(1, "\n", 1);
-		n++;
-		alfa = 'a';
+		_putchar('\n');
 	}
 }
