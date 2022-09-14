@@ -1,22 +1,25 @@
-#include "main.h"
+#include <unistd.h>
 /**
- * print_alphabet_x10 -> print the lower case alphabet
+ * print_alphabet_x10 - this program prints alphabet in ten lines
+ *
+ * Return: 0
  */
 
+/*void print_alphabet_x10(void)*/
 void print_alphabet_x10(void)
 {
-	int p;
-	int j;
+	char alfa = 'a';
+	int n = 1;
 
-	for (j = 0; j < 10; j++)
+	while (n <= 10)
 	{
-
-		for (p = 'a'; p <= 'z'; p++)
+		while (alfa <= 'z')
 		{
-			_putchar(p);
+			write(1, &alfa, 1);
+			alfa++;
 		}
-
-	_putchar('\n');
-
+		write(1, "\n", 1);
+		n++;
+		alfa = 'a';
 	}
-}	
+}
