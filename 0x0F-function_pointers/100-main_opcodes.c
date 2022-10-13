@@ -1,32 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "3-calc.h"
+
 /**
- * main - calculator
- * @argc: number of arguments pass by user
- * @argv: arguments pass by user
- * Return: 0
+ * main - a program that prints the opcodes of its own main function.
+ * @argc: The number of arguments passed to the program.
+ * @argv: The argument list.
+ * Return: 0 on success, or exit on failure.
  */
 int main(int argc, char *argv[])
 {
-	int first;
-	int second;
-	int (*get)(int, int);
+	unsigned char *f;
+	int bytes, i;
 
-	if (argc != 4)
+	if (argc != 2)
 	{
 		printf("Error\n");
-		exit(98);
+		exit(1);
 	}
-	first = atoi(argv[1]);
-	second = atoi(argv[3]);
-	get = get_op_func(argv[2]);
-	if (get == NULL)
+
+	bytes = atoi(argv[1]);
+	if (bytes < 0)
 	{
 		printf("Error\n");
-		exit(99);
+		exit(2);
 	}
-	printf("%d\n", get(first, second));
+
+	f = (unsigned char *)main;
+	for (i = 0; i < bytes; i++)
+	{
+		printf("%02x", *(f + i));
+		if (i < bytes - 1)
+			printf(" ");
+	}
+	printf("\n");
+
 	return (0);
 }
